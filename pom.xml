@@ -118,6 +118,8 @@
         <osgi.require.bundle />
         <osgi.export.service />
         <osgi.activator />
+        <failsafe.rerunFailingTestsCount>2</failsafe.rerunFailingTestsCount>
+        <surefire.rerunFailingTestsCount>2</surefire.rerunFailingTestsCount>    
     </properties>
 
     <scm>

@@ -23,8 +23,8 @@
         xmlns="https://www.gradle.com/gradle-enterprise-maven" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="https://www.gradle.com/gradle-enterprise-maven https://www.gradle.com/schema/gradle-enterprise-maven.xsd">
     <server>
-        <url>https://ge.apache.org</url>
-        <allowUntrusted>false</allowUntrusted>
+        <url>https://develocity-field.gradle.com</url>
+        <!-- adjust depending on whether trusted cert is already configured in GE: -->
     </server>
     <buildScan>
         <capture>
@@ -32,16 +32,14 @@
             <buildLogging>true</buildLogging>
             <testLogging>true</testLogging>
         </capture>
-        <backgroundBuildScanUpload>#{isFalse(env['GITHUB_ACTIONS'])}</backgroundBuildScanUpload>
+        <!-- adjust to your CI provider: -->
+        <backgroundBuildScanUpload>true</backgroundBuildScanUpload>
         <publish>ALWAYS</publish>
         <publishIfAuthenticated>true</publishIfAuthenticated>
-        <obfuscation>
-            <ipAddresses>#{{'0.0.0.0'}}</ipAddresses>
-        </obfuscation>
     </buildScan>
     <buildCache>
         <local>
-            <enabled>#{isFalse(env['GITHUB_ACTIONS'])}</enabled>
+            <enabled>true</enabled>
         </local>
         <remote>
             <enabled>false</enabled>
