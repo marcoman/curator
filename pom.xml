@@ -26,12 +26,12 @@
     <parent>
         <groupId>org.apache</groupId>
         <artifactId>apache</artifactId>
-        <version>21</version>
+        <version>31</version>
     </parent>
 
     <groupId>org.apache.curator</groupId>
     <artifactId>apache-curator</artifactId>
-    <version>5.5.1-SNAPSHOT</version>
+    <version>5.6.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Apache Curator</name>
@@ -72,7 +72,7 @@
         <redirectTestOutputToFile>true</redirectTestOutputToFile>
 
         <!-- versions -->
-        <zookeeper-version>3.7.2</zookeeper-version>
+        <zookeeper-version>3.9.1</zookeeper-version>
         <maven-bundle-plugin-version>5.1.4</maven-bundle-plugin-version>
         <maven-compiler-plugin-version>3.10.0</maven-compiler-plugin-version>
         <maven-dependency-plugin-version>3.2.0</maven-dependency-plugin-version>
@@ -354,6 +354,8 @@
         <module>curator-x-async</module>
         <module>curator-test-zk35</module>
         <module>curator-test-zk36</module>
+        <module>curator-test-zk37</module>
+        <module>curator-test-zk38</module>
     </modules>
 
     <dependencyManagement>
@@ -559,6 +561,10 @@
                     <exclusion>
                         <groupId>org.slf4j</groupId>
                         <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-classic</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -944,9 +950,9 @@
                         <importOrder>
                             <order>\#|</order>
                         </importOrder>
-                        <removeUnusedImports/>
-                        <trimTrailingWhitespace/>
-                        <endWithNewline/>
+                        <removeUnusedImports />
+                        <trimTrailingWhitespace />
+                        <endWithNewline />
                         <indent>
                             <spaces>true</spaces>
                             <spacesPerTab>4</spacesPerTab>

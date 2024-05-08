@@ -17,29 +17,24 @@
  * under the License.
  */
 
-package org.apache.curator.zk35;
+package org.apache.curator.zk37;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.apache.curator.test.compatibility.CuratorTestBase;
-import org.apache.curator.utils.Compatibility;
-import org.apache.curator.utils.ZookeeperCompatibility;
-import org.junit.jupiter.api.Tag;
+import org.apache.zookeeper.proto.WhoAmIResponse;
 import org.junit.jupiter.api.Test;
 
-public class TestIs35 extends CuratorTestBase {
+public class TestIs37 extends CuratorTestBase {
+    /**
+     * Ensure that ZooKeeper is 3.7 or above.
+     *
+     * <p>It uses reflection to get {@link WhoAmIResponse} which was introduced in 3.7.0.
+     *
+     * @see <a href="https://issues.apache.org/jira/browse/ZOOKEEPER-3969">ZOOKEEPER-3969</a>
+     */
     @Test
-    @Tag(zk35TestCompatibilityGroup)
-    public void testIsZk35() {
-        assertFalse(Compatibility.hasGetReachableOrOneMethod());
-        assertTrue(Compatibility.hasAddrField());
-        assertFalse(Compatibility.hasPersistentWatchers());
-        assertFalse(ZookeeperCompatibility.LATEST.hasPersistentWatchers());
-        assertFalse(ZookeeperCompatibility.builder().build().hasPersistentWatchers());
-        assertFalse(ZookeeperCompatibility.builder()
-                .hasPersistentWatchers(false)
-                .build()
-                .hasPersistentWatchers());
+    public void testIsZk37() throws Exception {
+        assertNotNull(Class.forName("org.apache.zookeeper.proto.WhoAmIResponse"));
     }
 
     @Override
